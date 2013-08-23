@@ -2,7 +2,7 @@ Predicting_CTR
 =============
 
 Developer	: Zicong Zhou; Deepak Ananth Rama; Xu Zhang; Jason Lu
-email		: deepakar@icloud.com, jaesanx@cs.ucla.edu, 
+email		: deepak.ananthrama@gmail.com, jaesanx@cs.ucla.edu, 
 Date		: March 2013
 For		: Research paper titled "Predicting Click-Through Rate for New Users and Advertisers"
 
@@ -15,16 +15,17 @@ Details of our training data set can be found here http://www.kddcup2012.org/c/k
 
 An example run for replicating results:
 
-1) add all the txt files from run-files folder into the same folder of src-files (referred as project)
-2) download lib linear http://www.csie.ntu.edu.tw/~cjlin/liblinear/ and run "make" on the project
-3) run LRFeaturePredictor.java, it should output 1.txt and 1_test.txt in the local path of the project.
-4) copy 1.txt, 1_test.txt, scoreKDD.py and newSol.txt (these 2 are from project.zip) to the project folder of lib linear
-5) in terminal navigate to liblinear folder
-6) run ./train -s 0 1.txt 1.model (this should generate 1.model)
-7) run ./predict -b 1 1_test.txt 1.out (this should generate 1.out)
-8) run awk '{for(i=3;i<=NF;++i)print $i}' temp.out > result.txt (gets the 3rd column needed to compare with newSol.txt)
-9) run tail -n 268554 results.txt > final.txt (gets rid of unnecessary line spacing)
-10) run python scoreKDD.py newSol.txt final.txt (this should generate the AUC, NWMAE, WRMSE metrics)
+1) combine all files in run-files/training into a single text file called "training.txt" and save it under run-files
+2) add all the txt files from run-files folder into the same folder of src-files (referred as project)
+3) download lib linear http://www.csie.ntu.edu.tw/~cjlin/liblinear/ and run "make" on the project
+4) run LRFeaturePredictor.java, it should output 1.txt and 1_test.txt in the local path of the project.
+5) copy 1.txt, 1_test.txt, scoreKDD.py and newSol.txt (these 2 are from project.zip) to the project folder of lib linear
+6) in terminal navigate to liblinear folder
+7) run ./train -s 0 1.txt 1.model (this should generate 1.model)
+8) run ./predict -b 1 1_test.txt 1.out (this should generate 1.out)
+9) run awk '{for(i=3;i<=NF;++i)print $i}' temp.out > result.txt (gets the 3rd column needed to compare with newSol.txt)
+10) run tail -n 268554 results.txt > final.txt (gets rid of unnecessary line spacing)
+11) run python scoreKDD.py newSol.txt final.txt (this should generate the AUC, NWMAE, WRMSE metrics)
 
 This package contains the following files:
 
